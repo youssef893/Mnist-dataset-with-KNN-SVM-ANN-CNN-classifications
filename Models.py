@@ -5,6 +5,7 @@ from keras.models import Sequential
 from keras.utils import to_categorical
 from sklearn import svm
 from sklearn.neighbors import KNeighborsClassifier
+from keras import backend as K
 
 
 class Models:
@@ -79,7 +80,7 @@ class Models:
         cnn.add(Dense(10, activation="softmax"))
         # compile cnn
         cnn.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
-        cnn.fit(trainFeatures.reshape(60000, 28, 28, 1), to_categorical(trainLabels), epochs=1, batch_size=128)
+        cnn.fit(trainFeatures.reshape(60000, 28, 28, 1), to_categorical(trainLabels), epochs=10, batch_size=128)
         prediction = cnn.predict(testFeatures.reshape(10000, 28, 28, 1))
         score = cnn.evaluate(testFeatures.reshape(10000, 28, 28, 1), to_categorical(testLabels), verbose=0)
         print("accuracy CNN", score[1])
