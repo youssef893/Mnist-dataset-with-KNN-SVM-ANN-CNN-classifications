@@ -1,9 +1,10 @@
-from keras.models import load_model
-from tkinter import *
 import tkinter as tk
-import win32gui
-from PIL import ImageGrab, Image
+from tkinter import *
+
 import numpy as np
+import win32gui
+from PIL import ImageGrab
+from keras.models import load_model
 
 model = load_model('cnn.h5')
 
