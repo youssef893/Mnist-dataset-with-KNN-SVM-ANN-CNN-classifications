@@ -1,6 +1,7 @@
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, r2_score, precision_score, \
     recall_score
 from Models import Models
+from sklearn.metrics import f1_score
 from getFeatures import GetFeatures
 
 
@@ -10,10 +11,12 @@ class RunModels:
     def printAccuracy(predictionList, labelsList):
         print("Accuracy_Score =", accuracy_score(labelsList, predictionList) * 100, "%")
         print("R2_score =", r2_score(labelsList, predictionList) * 100, "%")
+        print("F1_Score =", f1_score(labelsList, predictionList, average='weighted') * 100, "%")
         print("Confusion matrix =", confusion_matrix(labelsList, predictionList))
         print("precision =", precision_score(labelsList, predictionList, average=None) * 100)
         print("Recall =", recall_score(labelsList, predictionList, average=None) * 100)
         print("Classification Report =", classification_report(labelsList, predictionList))
+
 
     def calculateModelsAccuracy(self, KnnPrediction, SvmPrediction,
                                 ANNPrediction, CNNPrediction, testLabels):
